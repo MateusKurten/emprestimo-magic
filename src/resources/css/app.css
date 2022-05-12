@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* HIDE RADIO */
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    box-shadow: 0 0 3pt 2pt cornflowerblue
+}
+
+.link-hover{
+    position: relative;
+}
+
+.link-hover img{
+    visibility: hidden;
+    position: absolute;
+    bottom: -800%;
+    left: 100%;
+    z-index: 1;
+    width: 300px
+}
+
+.link-hover:hover img{
+    visibility: visible;
+}

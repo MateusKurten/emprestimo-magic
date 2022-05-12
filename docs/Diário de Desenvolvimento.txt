@@ -1,0 +1,29 @@
+==== Criando aplicação laravel ====
+
+Como eu já tinha o Laravel instalado, eu só fiz laravel new monografia para criar o molde básico da aplicação.
+
+Joguei tudo pra pasta src do projeto
+
+
+==== Configurando docker =====
+
+criei o arquivo docker-compose.yml com os services php, mysql e nginx
+
+Segui parte desse tutorial: https://www.digitalocean.com/community/tutorials/how-to-set-up-laravel-nginx-and-mysql-with-docker-compose-pt
+
+Me baseei também no carga horaria da FGV
+
+imagens utilizadas do docker:
+
+php: 8.1.1-fpm-buster (Dockerfile na diretorio base do projeto)
+
+O Dockerfile faz a instalação das extensões: mysqli pdo pdo_mysql pdo_dblib intl bcmath zip
+(Rever dockerfile para retirar o que não for preciso)
+
+mysql: 8.0 (Dockerfile em ./docker/mysql)
+nginx: alpine (imagem do DockerHub)
+
+==== Instalando Bootstrap ====
+
+composer require laravel/ui
+php artisan ui bootstrap

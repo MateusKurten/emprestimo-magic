@@ -1,0 +1,65 @@
+version: '3'
+services:
+
+  #PHP Service
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php-monografia
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: php
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./src/:/var/www
+      - ./docker/php/conf.d/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  #Nginx Service
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-monografia
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./src/:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - php
+    networks:
+      - app-network
+
+  #MySQL Service
+  mysql:
+    build:
+      context: ./docker/mysql/
+      dockerfile: Dockerfile
+    container_name: mysql-monografia
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: monografia
+      MYSQL_ROOT_PASSWORD: 123456
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker/mysql/conf.d/:/etc/mysql/conf.d/source
+      - ./docker/mysql/volumes/lib/:/var/lib/mysql
+      - ./docker/mysql/volumes/logs/:/var/mysql/logs
+      - ./docker/mysql/volumes/secure-files/:/var/mysql/secure-files
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
