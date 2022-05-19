@@ -7,7 +7,7 @@
     @csrf
 
     <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 mt-4">
-        <label class="block mb-12">
+        <label class="block mb-12 col-span-2">
             <span class="text-gray-700">Procure o seu amigo abaixo.</span>
             @widget('Select', [
                 'data' => collect($usuarios)->mapWithKeys(
@@ -17,8 +17,8 @@
                 'placeholder' => 'Insira o nome do amigo'
             ])
         </label>
-        <label class="block row-start-2 mt-2">
-            <span class="text-gray-700">Caso não encontre, informe seu nome abaixo</span>
+        <label class="block row-start-2 mt-2 col-span-2">
+            <span class="text-gray-700">Caso não encontre, informe o nome do seu amigo abaixo</span>
                 <input
                     class="form-input border-gray-300 focus:bg-white focus:shadow-none bg-gray-200 focus:bg-white mt-1 block w-full"
                     type="text"
