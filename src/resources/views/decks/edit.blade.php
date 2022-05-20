@@ -69,7 +69,7 @@
     </div>
     <div>
         <h2 class="text-xl">Pesquisar Carta</h2>
-        <form action="{{ route('decks.procura_carta', ['id' => $deck->id]) }}" method="POST">
+        <form action="{{ route('cartas.busca', ['id' => $deck->id]) }}" method="POST">
             @csrf
 
             <div class="grid grid-cols-6 gap-6">
@@ -147,7 +147,7 @@
         </form>
 
         @if (!empty($pesquisa_cartas))
-            <form action="{{ route('decks.adiciona_carta', ['id' => $deck->id]) }}" method="POST">
+            <form action="{{ route('cartas.store', ['id' => $deck->id]) }}" method="POST">
                 @csrf
 
                 <div class="grid grid-cols-3 gap-2 my-4">
@@ -220,7 +220,7 @@
                     </button>
                 </div>
                 <!-- Modal footer -->
-                <form action="{{ route('decks.deleta_carta', ['carta' => $carta->id]) }}" method="post">
+                <form action="{{ route('cartas.delete', ['carta' => $carta->id]) }}" method="POST">
                     @csrf
                     <div class="flex items-center justify-end p-2 mx-4 rounded-b border-gray-200 dark:border-gray-600">
                         <button
