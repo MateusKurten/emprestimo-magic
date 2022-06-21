@@ -33,12 +33,12 @@ class AmigoController extends Controller
             ]);
         }
 
-        if ($request->amigo_cadastrado) {
-            $amigo = Usuario::where('usuario', $request->amigo_cadastrado)->first();
-        } else {
+        if ($request->amigo) {
             $amigo = Usuario::create([
                 'usuario' => $request->amigo,
             ]);
+        } else {
+            $amigo = Usuario::where('usuario', $request->amigo_cadastrado)->first();
         }
 
         $usuario = Usuario::where('usuario', $request->session()->get('usuario'))->first();
