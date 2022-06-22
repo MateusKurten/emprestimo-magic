@@ -19,13 +19,23 @@ class UsuariosTableSeeder extends Seeder
         ]);
 
         \DB::table('usuarios')->insert([
-            'usuario' => 'teste',
-            'senha' => bcrypt('teste'),
+            'usuario' => 'Amigo 1',
+            'senha' => bcrypt('amigo1'),
         ]);
 
         \DB::table('usuarios')->insert([
-            'usuario' => 'teste2',
-            'senha' => bcrypt('teste2'),
+            'usuario' => 'Amigo 2',
+            'senha' => bcrypt('amigo2'),
+        ]);
+
+        \DB::table('usuarios')->insert([
+            'usuario' => 'Amigo 3',
+            'senha' => bcrypt('amigo3'),
+        ]);
+
+        \DB::table('usuarios')->insert([
+            'usuario' => 'Amigo 4',
+            'senha' => bcrypt('amigo4'),
         ]);
     }
 }
